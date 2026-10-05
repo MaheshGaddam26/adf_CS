@@ -78,7 +78,7 @@
 		},
 		"variables": {
 			"item": {
-				"type": "String"
+				"type": "Integer"
 			}
 		},
 		"annotations": []
