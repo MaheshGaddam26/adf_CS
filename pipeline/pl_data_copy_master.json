@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Lookup1",
+				"name": "read source table details",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -18,7 +18,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "select * from ctrl.table_config where source_system = '@{pipeline().parameters.source_system}';",
+							"value": "select table_id from ctrl.table_config where is_active = 1 and source_system = '@{pipeline().parameters.source_system}';",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -27,7 +27,46 @@
 					"dataset": {
 						"referenceName": "ds_AzureSql",
 						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "Ingest All tables",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "read source table details",
+						"dependencyConditions": [
+							"Succeeded"
+						]
 					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('read source table details').output.value",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Set variable1",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "item",
+								"value": {
+									"value": "@item().table_id",
+									"type": "Expression"
+								}
+							}
+						}
+					]
 				}
 			}
 		],
@@ -35,6 +74,11 @@
 			"source_system": {
 				"type": "string",
 				"defaultValue": "neon_postgres"
+			}
+		},
+		"variables": {
+			"item": {
+				"type": "String"
 			}
 		},
 		"annotations": []
