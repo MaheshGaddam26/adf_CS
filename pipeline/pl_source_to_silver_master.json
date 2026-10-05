@@ -1,5 +1,5 @@
 {
-	"name": "pl_data_copy_master",
+	"name": "pl_source_to_silver_master",
 	"properties": {
 		"activities": [
 			{
@@ -47,7 +47,31 @@
 					"items": {
 						"value": "@activity('read source table details').output.value",
 						"type": "Expression"
-					}
+					},
+					"activities": [
+						{
+							"name": "Execute Pipeline1",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "pl_source_silver_inner",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"table_id": {
+										"value": "@item().table_id",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
 				}
 			}
 		],
