@@ -59,7 +59,7 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": "item",
+								"variableName": "item1",
 								"value": {
 									"value": "@item().table_id",
 									"type": "Expression"
@@ -79,6 +79,9 @@
 		"variables": {
 			"item": {
 				"type": "Integer"
+			},
+			"item1": {
+				"type": "String"
 			}
 		},
 		"annotations": []
