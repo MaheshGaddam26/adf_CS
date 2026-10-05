@@ -158,11 +158,6 @@
 				"defaultValue": "a3"
 			}
 		},
-		"variables": {
-			"item": {
-				"type": "Integer"
-			}
-		},
 		"annotations": []
 	}
 }
