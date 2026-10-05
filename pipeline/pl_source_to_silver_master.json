@@ -48,6 +48,7 @@
 						"value": "@activity('read source table details').output.value",
 						"type": "Expression"
 					},
+					"isSequential": false,
 					"activities": [
 						{
 							"name": "Execute Pipeline1",
@@ -154,7 +155,7 @@
 			},
 			"adf_run_id": {
 				"type": "string",
-				"defaultValue": "a2"
+				"defaultValue": "a3"
 			}
 		},
 		"variables": {
