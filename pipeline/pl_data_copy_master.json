@@ -47,26 +47,7 @@
 					"items": {
 						"value": "@activity('read source table details').output.value",
 						"type": "Expression"
-					},
-					"activities": [
-						{
-							"name": "Set variable1",
-							"type": "SetVariable",
-							"dependsOn": [],
-							"policy": {
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"variableName": "item",
-								"value": {
-									"value": "@item().table_id",
-									"type": "Expression"
-								}
-							}
-						}
-					]
+					}
 				}
 			}
 		],
