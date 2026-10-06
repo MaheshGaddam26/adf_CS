@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "ADF-DEV-CS01"
+		},
+		"ls_AzureDatabricks_properties_typeProperties_existingClusterId": {
+			"value": "1005-152648-na0mkt3v"
+		},
+		"ls_AzureSqlDatabase_properties_typeProperties_server": {
+			"value": "caresync-database-server.database.windows.net"
+		},
+		"ls_AzureSqlDatabase_properties_typeProperties_database": {
+			"value": "CareSync_db01"
+		},
+		"ls_AzureSqlDatabase_properties_typeProperties_userName": {
+			"value": "sqladmin"
+		},
+		"ls_PostgreSQL_properties_typeProperties_server": {
+			"value": "ep-sparkling-resonance-b3fi34e1-pooler.c-4.ap-southeast-1.aws.neon.tech"
+		},
+		"ls_PostgreSQL_properties_typeProperties_database": {
+			"value": "neondb"
+		},
+		"ls_PostgreSQL_properties_typeProperties_username": {
+			"value": "neondb_owner"
+		},
+		"ls_adls_properties_typeProperties_url": {
+			"value": "https://sacaresync.dfs.core.windows.net/"
+		},
+		"ls_kv_properties_typeProperties_baseUrl": {
+			"value": "https://caresync-kv01.vault.azure.net/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
