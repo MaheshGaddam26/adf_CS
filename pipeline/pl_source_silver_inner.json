@@ -266,7 +266,7 @@
 							"dependsOn": [],
 							"policy": {
 								"timeout": "0.12:00:00",
-								"retry": 0,
+								"retry": 3,
 								"retryIntervalInSeconds": 30,
 								"secureOutput": false,
 								"secureInput": false
@@ -274,15 +274,12 @@
 							"userProperties": [],
 							"typeProperties": {
 								"source": {
-									"type": "PostgreSqlV2Source",
-									"query": {
-										"value": "select watermark_value from ctrl.watermark where table_id = @{pipeline().parameters.table_id}",
-										"type": "Expression"
-									},
-									"queryTimeout": "02:00:00"
+									"type": "AzureSqlSource",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
 								},
 								"dataset": {
-									"referenceName": "ds_PostgreSqlTable",
+									"referenceName": "ds_AzureSql",
 									"type": "DatasetReference"
 								}
 							}
